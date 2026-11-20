@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mend &amp; Nurture Animal Haven · Yuanhao Wang</title>
+  <meta name="description" content="An animal welfare building in Suzhou that heals stray animals through nature and human interaction. Spring 2025, XJTLU." />
+  <link rel="stylesheet" href="project.css" />
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" />
+  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js" defer></script>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+
+  <nav class="topnav" aria-label="Sections">
+    <a class="brand" href="#top">Mend &amp; Nurture</a>
+    <div class="links">
+      <a href="#background">Background</a>
+      <a href="#site">Site</a>
+      <a href="#research">Research</a>
+      <a href="#plan">Plan</a>
+      <a href="#model">3D Model</a>
+      <a href="#sections">Sections</a>
+      <a href="#experience">Experience</a>
+    </div>
+  </nav>
+
+  <!-- 封面 -->
+  <header class="hero" id="top">
+    <figure class="hero-img"><img src="images/hero.jpg" alt="Aerial view of the winding white roofs among trees beside the lake" /></figure>
+    <div class="hero-text">
+      <p class="kicker">Animal Welfare Building · Spring 2025</p>
+      <h1>MEND &amp; NURTURE<br />ANIMAL HAVEN</h1>
+      <dl class="meta">
+        <div><dt>Site</dt><dd>SIP District, Suzhou, China</dd></div>
+        <div><dt>Building area</dt><dd>10,000 m²</dd></div>
+        <div><dt>School</dt><dd>Xi’an Jiaotong-Liverpool University</dd></div>
+        <div><dt>Tutor</dt><dd>Siti Balkish Roslan</dd></div>
+        <div><dt>Type</dt><dd>Individual work</dd></div>
+      </dl>
+      <p class="lead">A stray animal shelter designed around the theme of <em>healing</em> — mental rehabilitation, physical treatment and human interaction — so that animals recover, and leave for permanent, loving homes.</p>
+      <a class="cta" href="#model">Explore the 3D model ↓</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- 01 背景 -->
+    <section class="chapter" id="background">
+      <header class="ch-head"><span class="num">01</span><h2>Background</h2></header>
+      <div class="cols">
+        <div class="col-text">
+          <h3>The problem</h3>
+          <p>Existing animal shelters face excessive space constraints, compromising the physical and mental health of animals. These stressors create a prolonged recovery cycle, extending the animals’ stay and reducing their adoption chances.</p>
+          <p>Shelters should aim for a <strong>non-cyclic model</strong> — nurturing animals to prepare them for permanent homes. By studying strays’ habits and needs, this project leverages interactions with nature and humans to heal them.</p>
+        </div>
+        <div class="col-text">
+          <h3>The response</h3>
+          <p>Set on a vast lawn with ample natural resources, the shelter gives stray dogs — its primary inhabitants — outdoor space for play, swimming and training, helping them overcome the trauma of homelessness. An on-site animal hospital offers isolation and treatment, and a fully transparent adoption center lets animals move on after recovery.</p>
+          <p>Pet-focused facilities for residents — an animal hospital, grooming and a pet-themed café — draw animal lovers in, encourage close human-animal contact, and generate operational income.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 场地 -->
+    <section class="chapter" id="site">
+      <header class="ch-head"><span class="num">02</span><h2>Site</h2>
+        <p class="ch-note">From the city to the lawn between Jinji Lake and Dushu Lake — the model is placed at its real location and true size on satellite imagery.</p>
+      </header>
+      <div class="sitemap">
+        <div id="sitemap"></div>
+        <div class="map-ui" role="group" aria-label="Map views">
+          <button type="button" data-go="city">Suzhou</button>
+          <button type="button" data-go="site">Site</button>
+          <button type="button" data-go="view3d" class="active">3D</button>
+        </div>
+        <p class="map-coord">31.2956° N · 120.6907° E</p>
+      </div>
+      <div class="split">
+        <figure class="zoomable"><img src="images/site.jpg" alt="Site location map between Jinji Lake and Dushu Lake" loading="lazy" /><figcaption>Site location, SIP District, Suzhou</figcaption></figure>
+        <div class="col-text sticky">
+          <h3>Between two lakes</h3>
+          <p>The site lies between Dushu Lake and Jinji Lake in Suzhou Industrial Park — one of the most densely populated areas of the city, surrounded by communities, commercial centers and scenic spots.</p>
+          <p>The lakeside walkway is the main viewing spot of the area, and many residents already come here to camp, barbecue and walk their dogs.</p>
+          <p>Originally the lawn only had a narrow, vehicle-impassable path. A new driveway connecting to the main road was added, enabling direct delivery of supplies to the shelter and easing access for campers behind the building.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 研究 -->
+    <section class="chapter" id="research">
+      <header class="ch-head"><span class="num">03</span><h2>Research</h2></header>
+      <div class="cols">
+        <div class="col-text">
+          <h3>Dogs as a social catalyst</h3>
+          <p>Stray dogs suffer from illness, hunger, loneliness and fear; many people suffer from stress, monotony and isolation. Mapping both perspectives shows how the needs meet: dogs need treatment, food, shelter and care — people need to go out more, distract their attention and find companionship.</p>
+        </div>
+        <div class="col-text">
+          <h3>Therapy for both</h3>
+          <p>The program is organised as therapy for people and animals alike: human therapy through adoption, physical therapy through outdoor activity space, psychological therapy through a pleasant living environment and treatment, and rehabilitation through socialisation training.</p>
+        </div>
+      </div>
+      <figure class="zoomable wide"><img src="images/research-needs.jpg" alt="Stray dog's perspective and human's perspective needs diagram" loading="lazy" /><figcaption>Stray dog’s needs and human’s needs</figcaption></figure>
+      <figure class="zoomable wide"><img src="images/research-senses.jpg" alt="Senses of dogs and cats" loading="lazy" /><figcaption>How dogs and cats perceive the world</figcaption></figure>
+      <figure class="zoomable wide"><img src="images/research-therapy.jpg" alt="Therapy diagram" loading="lazy" /><figcaption>Therapy: people and animals</figcaption></figure>
+    </section>
+
+    <!-- 04 动物行为 -->
+    <section class="chapter" id="behaviour">
+      <header class="ch-head"><span class="num">04</span><h2>Animal behaviour</h2></header>
+      <div class="split">
+        <figure class="zoomable"><img src="images/behaviour.jpg" alt="Study of dog and cat movement, playing and the adoption system" loading="lazy" /><figcaption>Breeds, gaits, movement and play; the adoption system</figcaption></figure>
+        <div class="col-text sticky">
+          <h3>Designing from their habits</h3>
+          <p>Dog breeds, sizes and gaits — from walk to gallop — and the ways cats walk, jump, climb, hide and play were studied to size spaces and design activity setups.</p>
+          <p>Every animal goes through a character analysis: stressed or ill animals are taken into isolation and therapy; others move on to climbing spaces, play areas and social training. The adoption system then matches them with people, while derivative services — café, hospital, market and grooming — sustain the shelter.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 平面 -->
+    <section class="chapter" id="plan">
+      <header class="ch-head"><span class="num">05</span><h2>Plan</h2></header>
+      <figure class="zoomable wide"><img src="images/users.jpg" alt="Circulation diagrams for staff, cats, tourists and residents, and dogs" loading="lazy" /><figcaption>How staff, cats, tourists and residents, and dogs use the building</figcaption></figure>
+      <div class="split plan">
+        <figure class="zoomable"><img src="images/plan.jpg" alt="Ground floor plan with 23 numbered spaces" loading="lazy" /><figcaption>Ground floor plan</figcaption></figure>
+        <div class="col-text sticky">
+          <h3>A winding sequence</h3>
+          <p>The winding kennels boost visitors’ exploration interest, reduce dogs’ eye contact, minimise conflicts and improve their shelter life. Elevated catteries prevent cat–dog conflicts and give cats dedicated indoor activity and climbing spaces.</p>
+          <ol class="legend">
+            <li>Staff Office</li><li>Training Dog Kennel</li><li>Training Space</li><li>Disinfection</li><li>Resting Room</li>
+            <li>Animal Adoption Center</li><li>Integrated Service Area</li><li>Exhibition</li><li>Volunteer Center</li><li>Animal Pampering Salon</li>
+            <li>Animal Photography Studio</li><li>Pet-welcome Restaurant</li><li>Pet Genetic and Wellness Center</li><li>Pet-themed Workshop</li><li>Pet Boutique</li>
+            <li>Animal Hospital</li><li>Cattery</li><li>Resting Room</li><li>Animal Hospital for Humane Centre</li><li>Dog Activity Space</li>
+            <li>Kennel</li><li>Food Transportation</li><li>Water-front Platform</li>
+          </ol>
+          <a class="cta small" href="model.html?style=diagram">See the plan in 3D →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 三维模型 -->
+    <section class="chapter model" id="model">
+      <header class="ch-head"><span class="num">06</span><h2>3D Model</h2>
+        <p class="ch-note">Switch between <em>Model</em>, <em>Realistic</em> and <em>Diagram</em> styles, explode the layers, and read the program and stories on the building.</p>
+      </header>
+      <div class="viewer">
+        <iframe id="viewer" title="Interactive 3D model" data-src="model.html?embed=1&amp;style=diagram&amp;view=building" loading="lazy"></iframe>
+        <button class="viewer-cover" id="viewer-cover" type="button">
+          <span class="play">Click to explore the 3D model</span>
+          <span class="hint">Drag to orbit · scroll to zoom · about 25 MB</span>
+        </button>
+      </div>
+      <p class="viewer-links"><a href="model.html">Open full screen ↗</a></p>
+    </section>
+
+    <!-- 07 剖面 -->
+    <section class="chapter" id="sections">
+      <header class="ch-head"><span class="num">07</span><h2>Waterfront &amp; sections</h2></header>
+      <figure class="zoomable wide"><img src="images/waterfront.jpg" alt="Waterfront corridor bridge at the end of the kennel zone" loading="lazy" /></figure>
+      <div class="cols">
+        <div class="col-text">
+          <p>At the eastern end of the kennel zone, a waterfront corridor bridge runs along the riverbank. During their scheduled outdoor periods dogs can splash and play in the water beneath it, while visitors walk straight from the entrance to watch them and enjoy the view across the water.</p>
+        </div>
+        <div class="col-text">
+          <p>The two long sections run through the kennels and courtyards. Levels range from −3.0 m at the waterfront to ±0.0 at ground and up to +10.0 m at the highest point of the roof.</p>
+        </div>
+      </div>
+      <figure class="zoomable wide"><img src="images/sections.jpg" alt="Section 1 and Section 2" loading="lazy" /><figcaption>Section 1 and Section 2</figcaption></figure>
+    </section>
+
+    <!-- 08 体验 -->
+    <section class="chapter" id="experience">
+      <header class="ch-head"><span class="num">08</span><h2>Experience</h2></header>
+      <figure class="zoomable wide"><img src="images/experience.jpg" alt="Axonometric of the whole site with visitor stories" loading="lazy" /><figcaption>Living with animals: walking by the water, the adoption office, the pet café, training and outdoor cat areas</figcaption></figure>
+    </section>
+
+    <!-- 09 构造与效果图 -->
+    <section class="chapter" id="structure">
+      <header class="ch-head"><span class="num">09</span><h2>Structure &amp; atmosphere</h2></header>
+      <div class="split">
+        <figure class="zoomable"><img src="images/exploded.jpg" alt="Exploded axonometric: roof, structure, monsoon window, ground floor" loading="lazy" /><figcaption>Roof, structure, monsoon window, ground floor</figcaption></figure>
+        <div class="col-text sticky">
+          <h3>Roof, structure, window</h3>
+          <p>A simple steel structure supports the roof, whose shape follows the layout of the dog kennels below.</p>
+          <p>For the monsoon’s heavy rain and strong winds, the windows are designed for good sealing; the kennels have adjustable vents to prevent stuffiness and dampness while keeping rainwater out.</p>
+        </div>
+      </div>
+      <div class="gallery">
+        <figure class="zoomable"><img src="images/render-1.jpg" alt="Entrance plaza under the circular roofs" loading="lazy" /></figure>
+        <figure class="zoomable"><img src="images/render-2.jpg" alt="Lawn and dog activity space" loading="lazy" /></figure>
+        <figure class="zoomable"><img src="images/render-3.jpg" alt="Glass kennels along the path" loading="lazy" /></figure>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="foot">
+    <p><strong>Mend &amp; Nurture Animal Haven</strong> · Yuanhao Wang · Xi’an Jiaotong-Liverpool University · Spring 2025</p>
+  </footer>
+
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="close" type="button" aria-label="Close">×</button>
+    <div class="lb-scroll"><img alt="" /></div>
+    <p class="lb-hint">Click the image to view at full size</p>
+  </div>
+
+  <script src="project.js"></script>
+  <script type="module">
+    import { initSiteMap } from './sitemap.js';
+    // 地图在滚动到附近时才创建；第一次完整进入画面时自动从全城飞到场地
+    const box = document.querySelector('.sitemap');
+    let ctl = null, played = false;
+    const io = new IntersectionObserver(async (entries) => {
+      for (const en of entries) {
+        if (en.isIntersecting && !ctl) {
+          ctl = 'pending';
+          await new Promise((r) => (window.maplibregl ? r() : addEventListener('load', r, { once: true })));
+          ctl = await initSiteMap(document.getElementById('sitemap'));
+        }
+        if (en.intersectionRatio > 0.6 && ctl && ctl !== 'pending' && !played) {
+          played = true;
+          ctl.map.loaded() ? ctl.intro() : ctl.map.once('load', () => ctl.intro());
+        }
+      }
+    }, { rootMargin: '300px 0px', threshold: [0, 0.6] });
+    io.observe(box);
+    document.querySelectorAll('.map-ui button').forEach((b) => b.addEventListener('click', () => {
+      if (!ctl || ctl === 'pending') return;
+      played = true;
+      document.querySelectorAll('.map-ui button').forEach((x) => x.classList.toggle('active', x === b));
+      ctl[b.dataset.go]();
+    }));
+  </script>
+</body>
+</html>

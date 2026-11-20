@@ -1,0 +1,158 @@
+:root {
+  --ink: #1d1f1c;
+  --muted: #6b6f68;
+  --paper: rgba(250, 250, 247, 0.86);
+  --line: rgba(29, 31, 28, 0.12);
+  --accent: #1d1f1c;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #e8ebe4;
+  color: var(--ink);
+  font: 13px/1.4 "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+#scene { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
+
+.title {
+  position: fixed; top: 28px; left: 32px; pointer-events: none;
+}
+.title .back {
+  pointer-events: auto; display: inline-block; margin-bottom: 8px; color: var(--muted);
+  text-decoration: none; font-size: 12px; letter-spacing: 0.02em;
+}
+.title .back:hover { color: var(--ink); }
+/* 嵌在项目页里时不重复显示标题 */
+body.embed .title { display: none; }
+body.embed #legend { bottom: 20px; left: 20px; max-height: calc(100vh - 60px); }
+body.embed .panel { top: 20px; right: 20px; }
+.title h1 {
+  margin: 0; font-size: 22px; font-weight: 800; font-style: italic; letter-spacing: 0.01em;
+}
+.title p { margin: 6px 0 0; color: var(--muted); font-style: italic; }
+
+.views {
+  position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%);
+  display: flex; gap: 2px; padding: 4px; background: var(--paper);
+  border: 1px solid var(--line); backdrop-filter: blur(8px);
+}
+.views button, .seg button {
+  border: 0; background: transparent; color: var(--ink); cursor: pointer;
+  padding: 8px 14px; font: inherit; letter-spacing: 0.02em;
+}
+.views button:hover, .seg button:hover { background: rgba(29, 31, 28, 0.06); }
+.views button.active, .seg button.active { background: var(--accent); color: #fff; }
+
+.panel {
+  position: fixed; top: 28px; right: 28px; width: 200px; padding: 14px 16px 16px;
+  background: var(--paper); border: 1px solid var(--line); backdrop-filter: blur(8px);
+}
+.panel h2 {
+  margin: 14px 0 8px; font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--muted);
+}
+.panel h2:first-child { margin-top: 0; }
+#layers { list-style: none; margin: 0; padding: 0; }
+#layers li { display: flex; align-items: center; gap: 8px; padding: 4px 0; cursor: pointer; user-select: none; }
+#layers .sw { width: 12px; height: 12px; border: 1px solid rgba(0, 0, 0, 0.25); flex: none; }
+#layers li.off { color: #a3a6a0; }
+#layers li.off .sw { opacity: 0.25; }
+
+.seg { display: flex; border: 1px solid var(--line); }
+.seg button { flex: 1; padding: 6px 0; }
+
+#sun { width: 100%; accent-color: var(--ink); }
+
+.toggle {
+  width: 100%; margin-top: 6px; padding: 6px 0; cursor: pointer;
+  border: 1px solid var(--line); background: transparent; color: var(--ink); font: inherit;
+}
+.toggle:hover { background: rgba(29, 31, 28, 0.06); }
+.toggle.active { background: var(--accent); color: #fff; }
+.panel { width: 220px; }
+
+.loading {
+  position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  text-align: center; color: var(--muted); transition: opacity 0.6s;
+}
+.loading .bar { width: 220px; height: 2px; margin-top: 10px; background: var(--line); }
+.loading .bar i { display: block; height: 100%; width: 0; background: var(--ink); transition: width 0.2s; }
+.loading.done { opacity: 0; pointer-events: none; }
+
+@media (max-width: 720px) {
+  .title { top: 16px; left: 16px; }
+  .title h1 { font-size: 16px; }
+  .panel { top: auto; bottom: 84px; right: 12px; width: 170px; }
+  .views { bottom: 16px; }
+  .views button { padding: 8px 10px; }
+}
+
+/* ---------- 图解标注（参照作品集第 15、17、18 页） ---------- */
+.diagram-only { display: none; }
+body.diagram .diagram-only { display: block; }
+
+#annotations { position: fixed; inset: 0; pointer-events: none; display: none; }
+#annotations.on { display: block; }
+#annotations > div { position: absolute; left: 0; top: 0; will-change: transform; }
+.ann-lines { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.ann-lines line, .ann-lines polyline { stroke: #1d1f1c; stroke-width: 1; fill: none; }
+.ann-lines line.story { stroke-width: 1.2; }
+
+/* 层名：大写细体，像第 18 页右侧的 ROOF / STRUCTURE */
+.ann-layer { width: 230px; padding-top: 8px; }
+.ann-layer b {
+  display: block; font-size: 17px; font-weight: 400; letter-spacing: 0.04em;
+  font-family: "Helvetica Neue", Arial, sans-serif; padding-bottom: 4px;
+}
+.ann-layer p {
+  margin: 6px 0 0; padding: 6px 8px; font-size: 11px; line-height: 1.45; color: #3a3d3a;
+  background: rgba(250, 250, 247, 0.88); box-shadow: 0 0 0 1px rgba(29, 31, 28, 0.06);
+}
+.ann-layer b { background: linear-gradient(transparent 55%, rgba(250, 250, 247, 0.9) 55%); display: inline-block; }
+
+/* 功能编号：白底黑圈数字，像第 15 页平面 */
+.ann-dot {
+  width: 20px; height: 20px; border-radius: 50%; background: #fff; border: 1px solid #1d1f1c;
+  font-size: 10px; font-weight: 700; line-height: 18px; text-align: center; color: #1d1f1c;
+  pointer-events: auto; cursor: default; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+.ann-dot.hot { background: #1d1f1c; color: #fff; transform-origin: center; z-index: 2; }
+
+/* 故事标注：黑底白字大写粗体，像第 17 页 */
+.ann-story {
+  width: 260px; padding: 8px 10px; background: #111; color: #fff;
+  font-size: 10.5px; font-weight: 800; line-height: 1.35; text-transform: uppercase; letter-spacing: 0.01em;
+}
+
+/* 首层功能图例 */
+#legend {
+  position: fixed; left: 32px; bottom: 28px; width: 250px; max-height: calc(100vh - 160px); overflow: auto;
+  padding: 12px 14px; background: var(--paper); border: 1px solid var(--line); backdrop-filter: blur(8px);
+  display: none;
+}
+#legend.on { display: block; }
+#legend h3 { margin: 0 0 8px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+#legend ol { list-style: none; margin: 0; padding: 0; columns: 1; }
+#legend li { display: flex; gap: 8px; align-items: baseline; padding: 1.5px 0; font-size: 11.5px; cursor: default; }
+#legend li span { width: 16px; flex: none; text-align: right; font-weight: 700; color: var(--muted); }
+#legend li.hot { color: #000; font-weight: 700; }
+@media (max-width: 720px) { #legend { display: none !important; } }
+
+/* ---------- 指北针与经纬度 ---------- */
+.compass {
+  position: fixed; right: 28px; bottom: 28px; display: flex; align-items: center; gap: 10px;
+  padding: 8px 12px 8px 8px; background: var(--paper); border: 1px solid var(--line); backdrop-filter: blur(8px);
+  color: var(--ink); text-decoration: none; font-size: 11px; line-height: 1.35; letter-spacing: 0.03em;
+}
+.compass:hover { border-color: var(--ink); }
+.compass svg { width: 40px; height: 40px; flex: none; transition: transform 0.05s linear; }
+.compass circle { fill: none; stroke: var(--ink); stroke-width: 1; opacity: 0.35; }
+.compass path { fill: var(--ink); }
+.compass text { font-size: 8px; font-weight: 700; fill: var(--ink); }
+body.embed .compass { right: 20px; bottom: 20px; }
+@media (max-width: 720px) { .compass { display: none; } }

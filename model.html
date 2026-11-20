@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>3D Model · Mend &amp; Nurture Animal Haven</title>
+  <link rel="stylesheet" href="style.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <canvas id="scene"></canvas>
+  <div id="annotations"></div>
+  <aside id="legend" aria-label="Ground floor plan legend"></aside>
+
+  <header class="title">
+    <a class="back" href="index.html">← Project story</a>
+    <h1>MEND &amp; NURTURE ANIMAL HAVEN</h1>
+    <p>Animal Welfare Building · Suzhou, China · 10,000 m² · Spring 2025</p>
+  </header>
+
+  <nav class="views" aria-label="Camera views">
+    <button data-view="overview" class="active">Overview</button>
+    <button data-view="building">Building</button>
+    <button data-view="kennel">Kennels</button>
+    <button data-view="eye">Eye level</button>
+  </nav>
+
+  <a class="compass" href="index.html#site" target="_top" title="See the site on a map">
+    <svg id="north" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" /><path d="M20 5 L26 22 L20 19 L14 22 Z" /><text x="20" y="34" text-anchor="middle">N</text></svg>
+    <span>31.2956° N<br />120.6907° E</span>
+  </a>
+
+  <aside class="panel" aria-label="Layers">
+    <h2>Style</h2>
+    <div class="seg" id="style" role="radiogroup">
+      <button data-style="model">Model</button>
+      <button data-style="realistic">Realistic</button>
+      <button data-style="diagram">Diagram</button>
+    </div>
+    <button id="explode" class="toggle">Explode layers</button>
+    <div class="diagram-only">
+      <h2>Notes</h2>
+      <div class="seg" id="notes" role="radiogroup">
+        <button data-mode="program" class="active">Program</button>
+        <button data-mode="stories">Stories</button>
+        <button data-mode="off">Off</button>
+      </div>
+    </div>
+    <h2>Layers</h2>
+    <ul id="layers"></ul>
+    <h2>Surroundings</h2>
+    <div class="seg" id="outer-mode" role="radiogroup">
+      <button data-mode="auto" class="active">Auto</button>
+      <button data-mode="show">Show</button>
+      <button data-mode="hide">Hide</button>
+    </div>
+    <h2>Sun</h2>
+    <input id="sun" type="range" min="0" max="360" value="215" aria-label="Sun direction" />
+  </aside>
+
+  <div class="loading" id="loading"><span id="loading-text">Loading model…</span><div class="bar"><i id="loading-bar"></i></div></div>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
